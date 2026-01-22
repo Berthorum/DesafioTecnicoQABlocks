@@ -2,7 +2,7 @@
 
 ## 🌟 Objetivo
 
-O objetivo do desafio é automatizar o fluxo de cadastro de usuários no sistema da empresa Blocks na sua página de registro (https://www.blocksrvt.com/pt/registrar), garantindo que o formulário funcione corretamente nos cenários mínimos obrigatórios exigidos. Poderia ser utilizado para realizar essa automação qualquer framework de automação do ecossistema Node.js (Cypress,
+O objetivo do desafio foi automatizar o fluxo de cadastro de usuários no sistema da empresa Blocks na sua página de registro (https://www.blocksrvt.com/pt/registrar), garantindo que o formulário funcione corretamente nos cenários mínimos obrigatórios exigidos. Poderia ser utilizado para realizar essa automação qualquer framework de automação do ecossistema Node.js (Cypress,
 Playwright, Selenium + JavaScript/TypeScript e etc). Foi escolhido o **Playwright** para realizar essa tarefa.
 
 Os cenários de teste (Condições de Teste) mínimos obrigatórios foram os seguintes:
@@ -39,7 +39,7 @@ Caso de Teste 02:
  - Submeter formulário.
  - Validar mensagem de erro.
 
-**Caso de Teste (Informar senha e confirmação de senha diferentes sem ter preenchido campos anteriores do formulário)**
+**Caso de Teste (Checagem de senha e confirmação de senha diferentes sem preenchimento anterior de campos do formulário)**
  - Pré-condição de Teste: Não ter preenchido nenhum outro campo do formulário.
  - Informar senhas diferentes.
  - Validar erro exibido.
@@ -47,18 +47,20 @@ Caso de Teste 02:
 
 ## 💡 Estratégia de Testes
 
-Podemos considerar que uma Estratégia de Testes é uma visão de alto nível e geral do que será testado de um sistema ou funcionalidade(s). Pensando nisso, foi criada uma estratégia de testes avaliando algumas características: Abordagem de Testes, Tipos de Testes, Ferramentas e Massas.
+Podemos considerar que uma Estratégia de Testes é uma visão de alto nível e geral do que será testado de um sistema ou funcionalidade(s). Pensando nisso, foi criada uma estratégia de testes baseada em algumas características: Abordagem de Testes, Tipos de Testes, Ferramentas e Massas.
 
 - **Abordagem de Testes**: Foi utilizado Testes Exploratórios como abordagem de testes em virtude de não possuir documentações ou outros artefatos relacionados à aplicação.
-- **Tipos de Testes**: Pelo escopo do desafio e condições de teste fornecidas os testes funcionais é o tipo de teste que deve ser escolhido.
-- **Ferramentas**: Para IDE (Visual Studio Code), Framework de Automação de Testes (Playwright), Versionamento e Entrega (Git/Github), Planejamento e Criação de Artefatos não relacionados à automação (Google Sheets) Ferramenta de Gestão de Testes (Qase).
-- **Massas**: Foram pré-definidas as massas de testes para os casos de teste nas condições de teste descritas, a fim de padronizar a execução dos testes.
+- **Tipos de Testes**: Pelo escopo do desafio e condições de teste fornecidas, os testes funcionais foi o tipo de teste escolhido.
+- **Ferramentas**: Para IDE (Visual Studio Code), Framework de Automação de Testes (Playwright), Versionamento e Entrega (Git/Github), Para planejamento e criação de Artefatos não relacionados à automação (Google Sheets) e Ferramenta de Gestão de Testes (Qase).
+- **Massas**: Foram pré-definidas as massas de testes para os casos de teste nos cenários descritos, a fim de padronizar a execução dos testes.
 
 Abaixo temos um Mapa Mental que exemplifica as características apresentadas:
 
 ![Mapa Mental - Estratégia de Testes](/images/Cadastro%20do%20Usuário.png)
 
-O Mapa de Cobertura, Estratégia de Testes e o Roteiro de Testes gerado pela plataforma Qase podem ser acessados nesta [Pasta no Google Drive](https://drive.google.com/drive/folders/18EYhuq9dHSzK_lwgD3_l6CkpIqrH7Sg0?usp=sharing)
+O Mapa de Cobertura, a Estratégia de Testes e o Roteiro de Testes, além de outros arquivos de apoio, gerado pela plataforma Qase podem ser acessados nesta [Pasta no Google Drive](https://drive.google.com/drive/folders/18EYhuq9dHSzK_lwgD3_l6CkpIqrH7Sg0?usp=sharing)
+
+É importante verificar o arquivo de imagem () contida na pasta mencionada acima, pois ela mostra a estrutura dos testes criada na plataforma Qase, sendo necessária para compreender o documento de Roteiro de Testes gerado por ela.
 
 
 ## 📚 Processo de Teste
@@ -66,9 +68,11 @@ As etapas do Processo de Teste definido pelo ISTQB utilizadas no projeto foram a
 
 - **Planejamento**: Por ter construído uma Estratégia de Testes utilizamos um pouco da Etapa de Planejamento do Processo de Teste.
 - **Análise**: Nesta etapa foi criado um Mapa de Cobertura após Análise da aplicação a partir de Testes Exploratórios e Testes de Fumaça.
-- **Modelagem**: Foi criado um Roteiro de Testes para os Casos de Testes nesta etapa dentro da plataforma Qase.
-- **Implementação**: Por ter utilizado uma ferramenta de Gestão de Testes já estamos realizando aspectos da etapa de implementação. Nesta etapa também foram implementados a Automação dos Testes.
+- **Modelagem**: Foi criado um Roteiro de Testes para os Casos de Testes nesta etapa dentro da plataforma Qase, utilizando a sintaxe Gherkin para descrição do passo-a-passo para reprodução dos casos de teste.
+- **Implementação**: Por ter utilizado uma ferramenta de Gestão de Testes já estamos realizando aspectos da etapa de implementação. Nesta etapa também foram implementados a Automação dos Testes e definidas as massas de teste.
 - **Execução e Reporte**: Foram executados os testes automatizados implementados e emitido seus respectivos reports a partir dos relatórios de execução dos testes gerados pelo Framework de Automação de Testes Playwright.
+
+Obs: As massas de teste relacionadas ao e-mail podem vir a ser únicas, visto que ao cadastrar um usuário na aplicação esse e-mail automaticamente é considerado como em uso, o que pode acarretar mensagens de validação de erro no caso de uso do mesmo e-mail em múltiplos testes após executar o cenário de teste **"Cadastro com sucesso"**. O e-mail deixado como massa para este cenário ainda não foi cadastrado na aplicação, mas não impede que na hora que o teste for executado algum outro testador já tenha cadastrado um usuário com este e-mail. Caso ocorra, basta trocar esta massa no código da automação.
 
 ## 🤖Testes Automatizados
 
@@ -117,7 +121,7 @@ npx playwright test
 
 Por padrão o Playwright executa os testes em modo Headless (Sem Interface Gráfica). Para ver o fluxo de execução dos testes na janela via Browser utilize a flag **--headed** no comando de execução dos Testes informado acima.
 
-Outro ponto importante é que o Playwright executa os testes nas Engines de diversos Browsers simultaneamente. Para executar os testes em um browser específico use o seguinte comando:
+Outro ponto importante, é que o Playwright executa os testes nas Engines de diversos Browsers simultaneamente. Para executar os testes somente em um browser específico use o seguinte comando:
 ```bash
  npx playwright test --project "tipo do browser"
 ```
@@ -128,7 +132,7 @@ A fim de facilitar a execução e analise dos scripts do projeto, foi realizada 
 - Definição de pasta de saída para evidências em vídeo da execução dos testes.
 - Configuração de baseURL para ser utilizada em todos os casos de teste.
 - Dimensões da Janela no modo Headed e do vídeo exportado pelo framework.
-- Modo Headless false por padrão para evitar uso da flag **"--headed"** em todas as execuções via CLI.
+- Modo Headless false por padrão para evitar uso da flag **"--headed"** em todas as execuções dos testes via CLI.
 - Configuração da Viewport para os principais browsers utilizados.
 
 2 - **Analisar relatório da execução (report) dos Testes**

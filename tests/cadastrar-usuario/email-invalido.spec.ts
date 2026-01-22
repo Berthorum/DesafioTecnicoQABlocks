@@ -1,18 +1,25 @@
 import { test, expect } from "@playwright/test";
 import { AcceptCookiesPage } from "../../pages/AcceptCookiesPage";
+import { FillFieldsPage } from "../../pages/FillFieldsPage";
 
 test.beforeEach(async ({ page }) => {
   // Uso de Page Object Model para ação de aceitar cookies.
-  
+
   const acceptCookiesPage = new AcceptCookiesPage(page);
   await acceptCookiesPage.acceptCookies();
 });
 
 test("G-mail com formato inválido", async ({ page }) => {
-  // Preenchimento dos campo "Email"
-  await page.getByPlaceholder("Email").fill("john.doe@gmail");
+  const fillFieldsPage = new FillFieldsPage(page);
 
-  const spanError = await page
+  // Preenchimento dos campo "Email"
+
+  await fillFieldsPage.fillInput({
+    selector: "#email",
+    value: "john.doe@gmail",
+  });
+
+  const spanError = page
     .locator("span")
     .filter({ hasText: "This is not a valid email." });
 

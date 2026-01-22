@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { AcceptCookiesPage } from "../../pages/AcceptCookiesPage";
+import { FillFieldsPage } from "../../pages/FillFieldsPage";
 
 test.beforeEach(async ({ page }) => {
   // Uso de Page Object Model para ação de aceitar cookies.
@@ -9,12 +10,13 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("Checagem de Nome e Sobrenome com único caractere", async ({ page }) => {
+  const fillFieldsPage = new FillFieldsPage(page);
   // Preenchimento dos campos "Nome" e "Sobrenome"
 
-  await page.locator("#first_name").fill("A");
-  await page.locator("#last_name").fill("B");
+  await fillFieldsPage.fillInput({ selector: "#first_name", value: "A" });
+  await fillFieldsPage.fillInput({ selector: "#last_name", value: "B" });
 
-  const spanErrors = await page
+  const spanErrors = page
     .locator("span")
     .filter({ hasText: "This field must contain at least three characters" });
 
@@ -26,63 +28,79 @@ test("Checagem de Nome e Sobrenome com único caractere", async ({ page }) => {
 test("Checagem de cadastro de usuário com Nome e Sobrenome sendo um único caractere especial", async ({
   page,
 }) => {
+  const fillFieldsPage = new FillFieldsPage(page);
+
   // Preenchimento dos campo "Email"
 
-  await page.getByPlaceholder("Email").fill("john.doebr01@gmail.com");
+  await fillFieldsPage.fillInput({
+    selector: "#email",
+    value: "john.doebr02@gmail.com",
+  });
 
   // Preenchimento dos campo "País"
 
-  await page.getByPlaceholder("Escolha o país").click();
-  await page.getByRole("button", { name: "Brazil" }).click();
+  await fillFieldsPage.fillDropdownSelector({
+    selector: 'input[placeholder="Escolha o país"]',
+    value: "Brazil",
+  });
 
   // Preenchimento dos campo "Idioma da Família"
 
-  await page.locator("span", { hasText: "Idioma da Família" }).click();
-  await page.getByRole("button", { name: "Families in English" }).click();
+  await fillFieldsPage.fillDropdownSelector({
+    selector: "span",
+    hasText: "Idioma da Família",
+    value: "Families in English",
+  });
 
   // Preenchimento dos campo "Área de Atuação"
 
-  const spanCheckboxArchitect = await page.locator("span", {
-    hasText: "Arquiteto",
-  });
-  spanCheckboxArchitect.locator("..").locator("div").click();
+  await fillFieldsPage.fillCheckbox({ selector: "span", value: "Arquiteto" });
   await page.waitForTimeout(2000);
 
-  const spanCheckboxDesign = await page.locator("span", {
-    hasText: "Designer de Interiores",
+  await fillFieldsPage.fillCheckbox({
+    selector: "span",
+    value: "Designer de Interiores",
   });
-
-  spanCheckboxDesign.locator("..").locator("div").click();
   await page.waitForTimeout(3000);
 
   // Preenchimento dos campos "Senha" e "Confirme sua Senha"
 
-  await page.locator("#password").fill("123456789Aa!");
-  await page.locator("#confirm_password").fill("123456789Aa!");
+  await fillFieldsPage.fillInput({
+    selector: "#password",
+    value: "123456789Aa!",
+  });
+  await fillFieldsPage.fillInput({
+    selector: "#confirm_password",
+    value: "123456789Aa!",
+  });
 
   // Preenchimento dos campo "Como você ficou sabendo sobre a Blocks"
 
-  await page
-    .locator("span", { hasText: "Como você ficou sabendo sobre a Blocks?" })
-    .click();
-  await page.getByRole("button", { name: "Other", exact: true }).click();
+  await fillFieldsPage.fillDropdownSelector({
+    selector: "span",
+    hasText: "Como você ficou sabendo sobre a Blocks?",
+    value: "Other",
+    exact: true,
+  });
 
   // Preenchimento dos campo "Termos de Uso"
 
-  const spanuTermsOfUse = await page.locator("span", {
-    hasText: "Eu aceito a",
+  await fillFieldsPage.fillCheckbox({
+    selector: "span",
+    value: "Eu aceito a",
   });
-  spanuTermsOfUse.locator("..").locator("div").click();
   await page.waitForTimeout(3000);
 
   // Preenchimento dos campos "Nome" e "Sobrenome"
 
-  await page.locator("#first_name").fill("#");
-  await page.locator("#last_name").fill("$");
+  await fillFieldsPage.fillInput({ selector: "#first_name", value: "#" });
+  await fillFieldsPage.fillInput({ selector: "#last_name", value: "$" });
 
   await page.waitForTimeout(5000);
 
-  const spanRegisterButton = await page.locator("span", {
+  // Processo para Click do Botão "Entrar"
+
+  const spanRegisterButton = page.locator("span", {
     hasText: "Entrar",
   });
 
