@@ -51,14 +51,14 @@ Podemos considerar que uma Estratégia de Testes é uma visão de alto nível e 
 
 - **Abordagem de Testes**: Foi utilizado Testes Exploratórios como abordagem de testes em virtude de não possuir documentações ou outros artefatos relacionados à aplicação.
 - **Tipos de Testes**: Pelo escopo do desafio e condições de teste fornecidas os testes funcionais é o tipo de teste que deve ser escolhido.
-- **Ferramentas**: Para IDE (Visual Studio Code), Framework de Automação de Testes (Playwright), Versionamento e Entrega (Git/Github), Planejamento e Criação de Artefatos não relacionados à automação (Google Sheets e Google Docs) Ferramenta de Gestão de Testes (Qase).
+- **Ferramentas**: Para IDE (Visual Studio Code), Framework de Automação de Testes (Playwright), Versionamento e Entrega (Git/Github), Planejamento e Criação de Artefatos não relacionados à automação (Google Sheets) Ferramenta de Gestão de Testes (Qase).
 - **Massas**: Foram pré-definidas as massas de testes para os casos de teste nas condições de teste descritas, a fim de padronizar a execução dos testes.
 
 Abaixo temos um Mapa Mental que exemplifica as características apresentadas:
 
 ![Mapa Mental - Estratégia de Testes](/images/Cadastro%20do%20Usuário.png)
 
-O Mapa de Cobertura, Estratégia de Testes e os arquivos gerados pela plataforma de Gestão de Testes Qase (Roteiro de Testes e Reporte da Execução) podem ser acessados [AQUI](https://drive.google.com/drive/folders/18EYhuq9dHSzK_lwgD3_l6CkpIqrH7Sg0?usp=sharing)
+O Mapa de Cobertura, Estratégia de Testes e o Roteiro de Testes gerado pela plataforma Qase podem ser acessados nesta [Pasta no Google Drive](https://drive.google.com/drive/folders/18EYhuq9dHSzK_lwgD3_l6CkpIqrH7Sg0?usp=sharing)
 
 
 ## 📚 Processo de Teste
