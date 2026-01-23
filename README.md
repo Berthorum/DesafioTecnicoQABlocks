@@ -60,7 +60,7 @@ Abaixo temos um Mapa Mental que exemplifica as características apresentadas:
 
 O Mapa de Cobertura, a Estratégia de Testes e o Roteiro de Testes, além de outros arquivos de apoio, gerado pela plataforma Qase podem ser acessados nesta [Pasta no Google Drive](https://drive.google.com/drive/folders/18EYhuq9dHSzK_lwgD3_l6CkpIqrH7Sg0?usp=sharing)
 
-É importante verificar o arquivo de imagem () contida na pasta mencionada acima, pois ela mostra a estrutura dos testes criada na plataforma Qase, sendo necessária para compreender o documento de Roteiro de Testes gerado por ela.
+É importante verificar o arquivo de imagem (Estrutura dos Testes - Qase.png) contida na pasta mencionada acima, pois ela mostra a estrutura dos testes criada na plataforma Qase, sendo necessária para compreender o documento de Roteiro de Testes gerado por ela.
 
 
 ## 📚 Processo de Teste
